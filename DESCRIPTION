@@ -18,3 +18,4 @@ Config/testthat/edition: 3
 Imports:
     ggplot2,
     stats
+URL: https://sz-yang.github.io/ConstrainedKDE/

@@ -1,6 +1,6 @@
 ---
 title: "Introduction to Constrained KDE"
-author: "Your Name"
+author: "Shizhao Yang"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
