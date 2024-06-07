@@ -23,5 +23,4 @@ h <- 0.6
 model <- fit_constrained_kde(x, h)
 p2 <- plot_constrained_kde_weights(model)
 print(p2)
-ggsave('stem_plot_3moments.png', plot=p2, dpi=300, width=10, height=6)
 }

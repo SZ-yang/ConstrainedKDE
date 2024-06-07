@@ -20,7 +20,7 @@ Predict density and moments using the fitted constrained KDE model
 \examples{
 set.seed(42)
 n <- 100
-x <- c(rnorm(0.5 * n, 0, 1), rnorm(0.5 * n, 1.5, 1/3))
+x <- c(rnorm(0.5*n, 0, 1), rnorm(0.5 * n, 1.5, 1/3))
 h <- 0.6
 model <- fit_constrained_kde(x, h)
 x_seq <- seq(min(x) - 1, max(x) + 1, length.out = 1000)

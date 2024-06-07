@@ -26,5 +26,4 @@ model <- fit_constrained_kde(x, h)
 x_seq <- seq(min(x) - 1, max(x) + 1, length.out = 1000)
 p1 <- plot_constrained_kde_density(model, x_seq)
 print(p1)
-ggsave('density_estimate_plot_3moments.png', plot=p1, dpi=300, width=10, height=6)
 }

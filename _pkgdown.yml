@@ -1,0 +1,46 @@
+pkgdown:
+  # The title of the package website
+  title: Constrained KDE
+  # The URL of the package website
+  url: https://yourusername.github.io/ConstrainedKDE/
+
+authors:
+  - name: Your Name
+    url: https://yourwebsite.com
+
+navbar:
+  structure:
+    left: [home, reference, articles]
+    right: [github]
+  components:
+    home:
+      text: Home
+      href: index.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    articles:
+      text: Articles
+      href: articles/index.html
+    github:
+      text: GitHub
+      href: https://github.com/yourusername/ConstrainedKDE
+
+articles:
+  - title: "Introduction to Constrained KDE"
+    contents:
+      - vignettes/constrained_kde.html
+
+reference:
+  title: "Function Reference"
+  contents:
+    - starts_with("fit_")
+    - starts_with("predict_")
+    - starts_with("plot_")
+    - starts_with("compute_")
+    - starts_with("kappa")
+    - starts_with("T_j")
+    - starts_with("biweight_kernel")
+    - starts_with("t_j")
+    - starts_with("v")
+    - starts_with("trapz")

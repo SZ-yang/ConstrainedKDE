@@ -1,8 +1,12 @@
+# Declare global variables to avoid R CMD check warnings
+utils::globalVariables(c("x", "weights"))
+
 #' Plot the fitted density for the constrained KDE model
 #'
 #' @param model The fitted model object
 #' @param x_seq The sequence of points to estimate the density
 #' @return A ggplot object
+#' @importFrom ggplot2 ggplot geom_line aes geom_rug ggtitle xlab ylab scale_color_manual theme_minimal
 #' @examples
 #' set.seed(42)
 #' n <- 100
@@ -12,7 +16,6 @@
 #' x_seq <- seq(min(x) - 1, max(x) + 1, length.out = 1000)
 #' p1 <- plot_constrained_kde_density(model, x_seq)
 #' print(p1)
-#' ggsave('density_estimate_plot_3moments.png', plot=p1, dpi=300, width=10, height=6)
 #' @export
 plot_constrained_kde_density <- function(model, x_seq) {
   results <- predict_constrained_kde(model, x_seq)
@@ -32,6 +35,7 @@ plot_constrained_kde_density <- function(model, x_seq) {
 #'
 #' @param model The fitted model object
 #' @return A ggplot object
+#' @importFrom ggplot2 ggplot aes geom_segment geom_point theme_minimal labs
 #' @examples
 #' set.seed(42)
 #' n <- 100
@@ -40,7 +44,6 @@ plot_constrained_kde_density <- function(model, x_seq) {
 #' model <- fit_constrained_kde(x, h)
 #' p2 <- plot_constrained_kde_weights(model)
 #' print(p2)
-#' ggsave('stem_plot_3moments.png', plot=p2, dpi=300, width=10, height=6)
 #' @export
 plot_constrained_kde_weights <- function(model) {
   data <- data.frame(x=model$x, weights=model$weights)

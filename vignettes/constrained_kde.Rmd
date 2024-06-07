@@ -1,0 +1,76 @@
+---
+title: "Introduction to Constrained KDE"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to Constrained KDE}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+
+)
+```
+
+```{r setup}
+library(ConstrainedKDE)
+library(ggplot2)
+```
+
+
+```{r}
+## ----generate-data------------------------------------------------------------
+# Function to generate synthetic data
+generate_synthetic_data <- function(n = 100, seed = 64) {
+  set.seed(seed)
+  x <- c(rnorm(0.5 * n, 0, 1), rnorm(0.5 * n, 1.5, 1/3))
+  return(x)
+}
+
+# Generate synthetic data
+x <- generate_synthetic_data()
+```
+## fit-model
+```{r}
+# Bandwidth for kernel density estimation using biweight kernel
+h <- 0.6
+
+# Fit the constrained KDE model
+model <- fit_constrained_kde(x, h)
+print(model)
+```
+
+## predict
+```{r}
+# Generate a sequence of points for prediction
+x_seq <- seq(min(x) - 1, max(x) + 1, length.out = 1000)
+
+# Predict density and moments using the fitted model
+predictions <- predict_constrained_kde(model, x_seq)
+print(predictions$density)
+print(predictions$moments)
+```
+
+## plot-density
+```{r}
+# Plot the fitted density
+p1 <- plot_constrained_kde_density(model, x_seq)
+print(p1)
+```
+## plot-weights
+
+```{r}
+
+# Plot the weights (stem plot)
+p2 <- plot_constrained_kde_weights(model)
+print(p2)
+
+# Save the plot to a file
+#ggsave('stem_plot_3moments.png', plot=p2, dpi=300, width=10, height=6)
+
+```

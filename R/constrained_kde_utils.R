@@ -1,12 +1,16 @@
+#' @import stats
+NULL
+
 # Function to compute the kappa value
+#' @importFrom stats integrate
 kappa <- function(l) {
-  integrand <- function(y) (15/16) * (1 - y^2)^2 * (y^l)
+  integrand <- function(y) (15/16) * (1 - y^2)**2 * (y^l)
   integrate(integrand, -1, 1)$value
 }
 
 # Biweight kernel function
 biweight_kernel <- function(u) {
-  (15/16) * (1 - u^2)^2 * (abs(u) <= 1)
+  (15/16) * (1 - u^2)**2 * (abs(u) <= 1)
 }
 
 # Function to compute the T_j(K_i) for a given j and X_i
